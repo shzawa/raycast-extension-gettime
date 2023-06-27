@@ -12,8 +12,10 @@
 // Documentation:
 // @raycast.author Shotaro Ozawa
 
-import { Clipboard } from "@raycast/api";
+import { Clipboard, closeMainWindow, popToRoot } from "@raycast/api";
 
-export default async function Command() {
+(async () => {
   await Clipboard.copy(new Date().getTime())
-}
+  await closeMainWindow({clearRootSearch: true});
+  await popToRoot({ clearSearchBar: true });
+})()
